@@ -127,7 +127,7 @@ class SiteController extends Controller
 실제 업무에서 [폼전송의 문제](http://en.wikipedia.org/wiki/Post/Redirect/Get)을 피하기 위해 [[yii\web\Controller::refresh()|refresh()]] 또는 [[yii\web\Controller::redirect()|redirect()]]를 사용 하는 것을 고려해 야 합니다.
 
 
-뷰 만들기 <span id = "creating-views"> </ span>
+뷰 만들기 <span id = "creating-views"> </span>
 ----------
 
 마지막으로,  `entry-confirm` 과 `entry`. 라는 두 가지 뷰 파일을 만듭니다.
@@ -175,7 +175,7 @@ use yii\widgets\ActiveForm;
 
 
 
-실행 <span id = "trying-it-out"> </ span>
+실행 <span id = "trying-it-out"> </span>
 ----------
 
 어떻게 작동 하는지 보기 위해 브라우저에서 다음 URL을 입력 하세요.
@@ -196,7 +196,7 @@ http://hostname/index.php?r=site/entry
 ![데이터 입력 확인](images/start-entry-confirmation.png)
 
 
-### 마법같은 설명 <span id = "magic-explained"> </ span>
+### 마법같은 설명 <span id = "magic-explained"> </span>
 
 당신은 화면에서 HTML 양식이 어떻게 움직이고 있는지 궁금해 할것입니다.
 왜냐하면 양식이 거의 마술 같이, 각 입력 필드의 레이블을 표시 하 고 데이터를 올바르게 입력 하지 않은 경우에는 페이지를 다시 로드 하지 않고 오류 메시지를 표시 하기 때문입니다.
@@ -214,7 +214,7 @@ http://hostname/index.php?r=site/entry
 
 보기에서 다음 코드와 같이 레이블을 지정할 수 있습니다.
 
-'''php
+```php
 <?= $form->field($model, 'name')->label('Your Name') ?>
 <?= $form->field($model, 'email')->label('Your Email') ?>
 ```
