@@ -36,7 +36,7 @@ Yii는 일련의 마이그레이션 명령 커멘트 를 제공하여 다음과 
 > Tip | A : 마이그레이션은 데이터베이스 스키마에 영향을 미칠뿐만 아니라 기존 데이터를 새 스키마에 맞게 수정하거나 RBAC 계층을 만들거나 캐시를 정리 할 수 있습니다.
 
 
-## 마이그레이션 만들기  <span id = "creating-migrations"> </ span>
+## 마이그레이션 만들기  <span id = "creating-migrations"></span>
 
 새로운 마이그레이션을 작성하기 위해서는 다음 명령을 실행합니다.
 
@@ -173,7 +173,7 @@ class m150101_185401_create_news_table extends Migration
 컬럼의 형태를 정의하는 데 사용할 수있는 모든 메소드의 목록은 [[yii\db\SchemaBuilderTrait]]의 API 문서에서 참조 할 수 있습니다.
 
 
-### 트랜잭션을 사용한 마이그레이션 <span id = "transactional-migrations"> </ span>
+### 트랜잭션을 사용한 마이그레이션 <span id = "transactional-migrations"></span>
 
 복잡한 일련의 DB 마이그레이션을 수행 할 때는 일반적으로 데이터베이스의 일관성과 무결성을 유지하기 위해 각 마이그레이션이 전체적으로 성공 또는 실패하는 것을 보장해야합니다.
 이 목적을 달성하기 위해 각 마이그레이션 DB 작업을 트랜잭션 (db-dao.md#performing-transactions)로 묶을 것을 권장합니다.
@@ -221,7 +221,7 @@ class m150101_185401_create_news_table extends Migration
   몇 가지 예를 [암시 적 커밋 (http://dev.mysql.com/doc/refman/5.1/en/implicit-commit.html)에서 볼 수 있습니다.
   이 경우에는 ,`up )` 과 `down()` 에서 구현해야합니다.
 
-### 데이터베이스 액세스 메소드 <span id = "db-accessing-methods"> </ span>
+### 데이터베이스 액세스 메소드 <span id = "db-accessing-methods"></span>
 
 기본 마이그레이션 클래스 [[yii\db\Migration] 데이터베이스에 액세스하고 조작 하기 위한 일련의 메소드를 제공합니다.
 당신은 이러한 방법이 [[yii\db\Command]] 클래스에서 제공하는 [DAO 메소드 (db-dao.md)와 같은 이름을 붙일 수 있음을 알 수 있습니다.
@@ -263,7 +263,7 @@ class m150101_185401_create_news_table extends Migration
 > 이러한 이유 때문에 마이그레이션 코드는 활성 레코드와 같은 응용 프로그램의 다른 로직으로부터 독립을 유지해야합니다.
 
 
-## 마이그레이션을 적용  <span id = "applying-migrations"> </ span>
+## 마이그레이션을 적용  <span id = "applying-migrations"></span>
 
 데이터베이스를 최신 구조로 업그레이드하기 위해 사용할 수있는 모든 새로운 마이그레이션을 적용하기 위해 다음 명령을 사용해야합니다.
 
@@ -304,7 +304,7 @@ yii migrat
 지정된 마이그레이션이 이미 적용되어있는 경우보다 최근의 것이 적용되어 있으면 취소됩니다.
 
 
-## 마이그레이션 취소 <span id = "reverting-migrations"> </ span>
+## 마이그레이션 취소 <span id = "reverting-migrations"></span>
 
 적용된 마이그레이션을 한 개 또는 다수로 취소하려면 다음 명령을 사용할 수 있습니다.
 
@@ -317,7 +317,7 @@ yii migrate/down 3   # 최근에 적용된 마이그레이션 세 개를 취소
 > Note |주의 : 모든 마이그레이션을 취소 할 수는 없습니다.
   이렇게 마이그레이션을 되돌릴하려고하면 오류가 발생하고 전체 취소 과정이 종료 됩니다.
 
-## 마이그레이션을 다시 적용 <span id = "redoing-migrations"> </ span>
+## 마이그레이션을 다시 적용 <span id = "redoing-migrations"></span>
 
 마이그레이션을 다시 적용 한다는것은 지정된 마이그레이션을 먼저 취소하고 다시 적용하는 것을 의미합니다.
 이것은 다음의 명령으로 수행 할 수 있습니다.
@@ -330,7 +330,7 @@ yii migrate/redo 3      # 마지막으로 적용된 세 개의 마이그레이�
 > Note |주의 : 마이그레이션이 취소 불가능한 경우는 이것을 다시 적용 할 수 없습니다.
 
 
-## 마이그레이션 정렬 <span id = "listing-migrations"> </ span>
+## 마이그레이션 정렬 <span id = "listing-migrations"></span>
 
 어떤 마이그레이션이 적용되어 있으며, 어떤 마이그레이션이 적용되지 않은인지를 리스트업하려면 다음 명령을 사용할 수 있습니다.
 
@@ -345,7 +345,7 @@ yii migrate/new all     # 적용 가능한 모든 마이그레이션보기
 ```
 
 
-## 마이그레이션 이력 수정 <span id = "modifying-migration-history"> </ span>
+## 마이그레이션 이력 수정 <span id = "modifying-migration-history"></span>
 
 어떠한 경우에는, 실제로 마이그레이션을 적용하거나 취소하는 것이 아니라 데이터베이스가 특정 마이그레이션까지 업그레이드 된 것으로 표시하고 싶은 경우가 있습니다.
 이런 일이 자주 일어나는 데이터베이스를 수동으로 특정 상태로 변경 한 후 그 변화를위한 하나 이상의 마이그레이션을 기록하지만 다시 적용하고 싶지 않다는 경우입니다 .
@@ -362,11 +362,11 @@ yii migrate/mark 1392853618                         # UNIX 타임 스탬프를 �
 이 명령은 마이그레이션이 적용되거나 취소되거나는하지 않습니다.
 
 
-## 마이그레이션 사용자 커스터마이징 <span id = "customizing-migrations"> </ span>
+## 마이그레이션 사용자 커스터마이징 <span id = "customizing-migrations"></span>
 
 마이그레이션 명령을 사용자 지정하는 방법이 몇 가지 있습니다.
 
-### 명령 줄 옵션을 사용 <span id = "using-command-line-options"> </ span>
+### 명령 줄 옵션을 사용 <span id = "using-command-line-options"></span>
 
 마이그레이션 명령은 그 동작을 사용자 지정하는 데 사용할 수있는 명령 줄 옵션이 몇 가지 있습니다.
 
@@ -403,7 +403,7 @@ yii migrate/mark 1392853618                         # UNIX 타임 스탬프를 �
 yii migrate --migrationPath=@app/modules/forum/migrations --interactive=0
 ```
 
-### 명령을 전역으로 구성 <span id = "configuring-command-globally"> </ span>
+### 명령을 전역으로 구성 <span id = "configuring-command-globally"></span>
 
 마이그레이션 명령을 실행할 때마다 동일한 옵션의 값을 입력하는 대신 다음과 같이 응용 프로그램 구성 정보에 명령을 한 번만 구성하고 끝 마칠 수 있습니다.
 
@@ -422,7 +422,7 @@ return [
 또`migrationTable` 명령 줄 옵션을 사용하여 테이블을 지정할 필요가 없습니다.
 
 
-## 여러 데이터베이스의 마이그레이션 적용 <span id = "migrating-multiple-databases"> </ span>
+## 여러 데이터베이스의 마이그레이션 적용 <span id = "migrating-multiple-databases"></span>
 
 기본적으로 마이그레이션은 `db` 응용 프로그램 구성 요소 (structure-application-components.md)에 의해 지정된 동일한 데이터베이스에 적용됩니다.
 마이그레이션을 다른 데이터베이스에 적용 할 경우, 다음과 같이 `db` 명령 줄 옵션을 지정할 수 있습니다.
