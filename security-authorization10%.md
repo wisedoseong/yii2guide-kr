@@ -495,21 +495,21 @@ $auth->addChild($admin, $author);
 상기 "author" 가 "admin" 의 자식으로 추가되어 있기 때문에 규칙 클래스의 `execute()`메소드를 구현할 때이 계층 적 관계도 배려해야한다는 점에주의하십시오.
 이를 위해 역할 이름이 "author"인 경우는`execute ()`메소드는 사용자 그룹이 1 또는 2 인 (사용자가 "admin"그룹 또는 "author"그룹에 속한) 때 true를 반환합니다.
 
-다음은`authManager` 구성 정보에이 두 역할을 [yii \ rbac \ BaseManager : $ defaultRoles]로 나열합니다.
+다음은`authManager` 구성 정보에이 두 역할을 [[yii\rbac\BaseManager::$defaultRoles]]로 나열합니다.
 
 ```php
 return [
     // ...
-    'components'=>
-        'authManager'=>
-            'class'=> 'yii \ rbac \ PhpManager'
-            'defaultRoles'=> 'admin', 'author',
-        ,
+    'components' => [
+        'authManager' => [
+            'class' => 'yii\rbac\PhpManager',
+            'defaultRoles' => ['admin', 'author'],
+        ],
         // ...
-    ,
+    ],
 ];
 ```
 
-이렇게하면 액세스 검사를 수행하면`admin`와`author` 모두의 역할은 그와 연관된 규칙을 평가하여 확인하실 수 있습니다.
+이렇게 액세스 검사를 수행하면 `admin` 과 `author` 모두의 역할과 그와 연관된 규칙을 평가하여 확인하실 수 있습니다.
 규칙이 true를 반환하면 해당 역할이 현재 사용자에게 적용되게됩니다.
-위 규칙의 구현에 따라 말하면, 사용자의`group` 값이 1이면`admin` 롤이 사용자에게 적용되지`group` 값이 2이면`author` 롤이 적용됩니다 하는 것을 의미합니다.
+위 규칙의 구현에 따라 말하면, 사용자의 `group` 값이 1이면 `admin` 롤이 사용자에게 적용되고 `group` 값이 2이면 `author` 롤이 적용 되는것을 의미 합니다.
