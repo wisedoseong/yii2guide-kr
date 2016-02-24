@@ -1,13 +1,8 @@
-동작(Behaviors)
-=====
+비헤이비어(행동, Behaviors)
+==========
 
-비헤이비어은 [[yii\base\Behavior]], 혹은 그 하위 클래스의 인스턴스입니다. 비헤이비어는
-[mixins](http://en.wikipedia.org/wiki/Mixin), 로 알려진 기존의 [[yii\base\Component|component]] 클래스
-기능을 클래스의 상속을 변경하지 않고 확장 할 수 있습니다. 구성 요소에 비헤이비어를 연결하면
-구성 요소는 동작 메서드와 속성이 "injects"되고 그 메서드와 속성은
-구성 요소 클래스 자체에 정의되어있는 것처럼 액세스 할 수 있습니다. 또한 비헤이비어는
-컴퍼넌트에 의해 트리거 된 [events](concept-events.md)에 응답 할 수 있기 때문에,
-비헤이비어 구성 요소의 일반 코드 실행을 사용자 정의 할 수 있습니다.
+비헤이비어은 [[yii\base\Behavior]] 의 인스턴스 혹은 그 하위 클래스 입니다. 비헤이비어는 [mixins](http://en.wikipedia.org/wiki/Mixin), 로 알려진 기존의 [[yii\base\Component|component]] 클래스 기능을 클래스의 상속을 변경하지 않고 확장 할 수 있습니다.
+구성 요소에 비헤이비어를 연결하면 구성 요소는 베헤이비어 메서드와 속성이 "injects" 되고 그 메서드와 속성은 구성 요소 클래스 자체에 정의되어있는 것처럼 액세스 할 수 있습니다. 또한 비헤이비어는 컴퍼넌트에 의해 트리거 된 [events](concept-events.md)에 응답 할 수 있기 때문에, 비헤이비어 구성 요소의 일반 코드의 실행을 사용자 정의 할 수 있습니다.
 
 
 비헤이비어 정의  <span id="defining-behaviors"></span>
@@ -43,47 +38,47 @@ class MyBehavior extends Behavior
 }
 ```
 
-위의 코드는`app \ components \ MyBehavior`라는 두 개의 속성 -`prop1`와`prop2` -와
-`foo ()`메소드를 가지는 동작 클래스를 정의합니다. `prop2` 속성은`getProp2 ()`getter 메소드와`setProp2 ()`setter 메소드로 정의되는 것에 주목하십시오.
-[yii \ base \ Behavior]]는 [[yii \ base \ Object]를 계승하고 있기 때문에 getter와 setter에 따르면 속성 (concept-properties.md) 정의를 지원합니다.
+위의 코드 `app\components\MyBehavior`는 `prop1`, `prop2` 두개의 속성 그리고  `foo()`라는 메소드와 함께 비헤이비어 클래스를 정의합니다.
+`prop2` 속성은 `getProp2()` 메소드에서 받아지고, `setProp2 ()` 에서 정의 됩니다.
+[[yii\base\Behavior]] 는 [[yii\base\Object]]를 계승하고 있기 때문에 getter와 setter에 따르며 [properties](concept-properties.md) 정의를 지원합니다.
 
-이 클래스는 동작이므로 구성 요소에 연결되면, 그 구성 요소는`prop1`와`prop2` 속성 그것`foo ()`메소드를 갖게됩니다.
+이 클래스는 비헤이비어 구성 요소에 연결되면, 그 구성 요소는 `prop1` 과 `prop2` 속성 그리고 `foo()`메소드를 갖게됩니다.
 
-> Tip : 동작 내에서 [yii \ base \ Behavior : owner] 속성을 통해 비헤이비어를 연결 한 구성 요소에 액세스 할 수 있습니다.
+> Tip : 동작 내에서 [[yii\base\Behavior::owner]] 속성을 통해 비헤이비어를 연결 한 구성 요소에 액세스 할 수 있습니다.
 
 구성 요소 이벤트 처리
 ------------------
 
 비헤이비어가 부착 된 구성 요소가 트리거하는 이벤트에 응답 할 필요가있는 경우
-[yii \ base \ Behavior :: events ()]] 메소드를 오버라이드하자. 예를 들어 :
+[[yii\base\Behavior::events()]]  메소드를 오버라이드하자. 예를 들어 :
 
 ```php
-namespace app \ components;
+namespace app\components;
 
-use yii \ db \ ActiveRecord;
-use yii \ base \ Behavior;
+use yii\db\ActiveRecord;
+use yii\base\Behavior;
 
 class MyBehavior extends Behavior
 {
     // ...
 
-    public function events ()
+    public function events()
     {
         return [
-            ActiveRecord :: EVENT_BEFORE_VALIDATE => 'beforeValidate'
+            ActiveRecord::EVENT_BEFORE_VALIDATE => 'beforeValidate',
         ];
     }
 
-    public function beforeValidate ($ event)
+    public function beforeValidate($event)
     {
         // ...
     }
 }
 ```
 
-[yii \ base \ Behavior :: events ()]] 메소드는 이벤트와 해당 핸들러의리스트를 돌려줍니다.
-위의 예에서는 [yii \ db \ ActiveRecord :: EVENT_BEFORE_VALIDATE | EVENT_BEFORE_VALIDATE] 이벤트가있는 것,
-그 핸들러 정의 인`beforeValidate ()`을 선언하고 있습니다. 이벤트 핸들러를 지정할 때는 다음의 표기 방법을 사용할 수 있습니다 :
+[[yii\base\Behavior::events()|events()]] 메소드는 이벤트와 해당 핸들러의리스트를 돌려줍니다.
+위의 예에서는 [[yii\db\ActiveRecord::EVENT_BEFORE_VALIDATE|EVENT_BEFORE_VALIDATE]] 이벤트가있는 것,
+그 핸들러 정의 인 `beforeValidate()`을 선언하고 있습니다. 이벤트 핸들러를 지정할 때는 다음의 표기 방법을 사용할 수 있습니다 :
 
 * 동작 클래스의 메소드 이름을 참조하는 문자열 (위의 예 등)
 * 객체 또는 클래스 이름과 문자열 메소드 이름 (괄호없이) 예`[$ object 'methodName']`
